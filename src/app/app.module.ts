@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, rootReducer } from './state/00-reducer';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.forRoot({
+      root: rootReducer
+    }, {
+      metaReducers : metaReducers
+    }) /*1 Pour Root reducer et 2 pour meta Reducer*/
   ],
   providers: [],
   bootstrap: [AppComponent]
