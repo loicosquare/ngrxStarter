@@ -5,6 +5,6 @@
     Change username
   </button>
 
-  <h4>Username: {{ (user | async).username }}</h4>
-  <h4>isAdmin: {{ (user | async).isAdmin }}</h4>
+  <h4>Username: {{ (user | async)?.username }}</h4>
+  <h4>isAdmin: {{ (user | async)?.isAdmin }}</h4>
 </div>
