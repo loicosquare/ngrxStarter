@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { initAction } from './state/01-actions';
+import { initAction, changUserName } from './state/01-actions';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +15,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(initAction());
+  }
+
+  changeUsername(): void{
+    this.store.dispatch(changUserName({username: `Loico Square ${Math.random()}`}));
   }
 }
