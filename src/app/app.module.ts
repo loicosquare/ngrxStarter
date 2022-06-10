@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { metaReducers, rootReducer } from './state/00-reducer';
+import { metaReducers, rootReducer, ROOT_FEATURE_KEY } from './state/00-reducer';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { metaReducers, rootReducer } from './state/00-reducer';
   imports: [
     BrowserModule,
     StoreModule.forRoot({
-      root: rootReducer
+      [ROOT_FEATURE_KEY]: rootReducer
     }, {
       metaReducers : metaReducers
     }) /*1 Pour Root reducer et 2 pour meta Reducer*/

@@ -23,7 +23,6 @@ export class AppComponent implements OnInit{
     this.store.dispatch(initAction());
     //this.user = this.store.select((state: any) => state.root.user);
     //this.user = this.store.pipe(select((state: State) => state.root.user));
-
     this.user = this.store.pipe(select(getUser));
   }
 
