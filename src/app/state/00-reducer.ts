@@ -1,19 +1,22 @@
 import { state } from "@angular/animations";
-import { ActionReducer, createReducer, MetaReducer, on } from "@ngrx/store";
+import { Action, ActionReducer, createReducer, MetaReducer, on } from "@ngrx/store";
 import { User } from "../models/user";
 import { changUserName, initAction } from "./01-actions";
 
 export interface State{
-  root:{
-    appName: string;
-    user: User;
-  }
+  root:RootState;
 }
 
-const initialState = {
+export interface RootState{
+  appName: string;
+  user: User;
+}
+
+const initialState : RootState = {
   appName: 'NgRx',
   user : {
-    isAdmin: false
+    isAdmin: false,
+    username: ''
   }
 };
 
@@ -33,7 +36,7 @@ function log(reducer: ActionReducer<any>) : ActionReducer<State>{
 
 export const metaReducers : MetaReducer[] = [log]; 
 
-export const rootReducer = createReducer(initialState,
+export const rootReducer = createReducer<RootState, Action>(initialState,
   on(initAction, (state) =>{
     return {
       ...state,
@@ -43,7 +46,7 @@ export const rootReducer = createReducer(initialState,
       }
     }
   }),
-  on(changUserName, (state, props) =>{
+  on(changUserName, (state: RootState, props) =>{
     return{
       ...state,
       user:{
